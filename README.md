@@ -2,6 +2,12 @@
 
 This angularjs directive is used to mask the entered aadhaar number and mobile number with user customized mask length and checks verhoeff validation
 
+### Importing Library
+```
+ var app = angular.module('MyApp', [
+        'input_masking'
+    ]);
+```
 ### Usage
 
 #### For masking complete aadhaar number 
