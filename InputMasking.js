@@ -2,7 +2,7 @@
  Author  : Venkatesh Nelli
  Version : 2.0
  License : GNU General Public License v3.0
- Description: This Directive is used for masking aadhaar number
+ Description: This Directive is used for masking aadhaar number and mobile number
  */
 (function () {
     'use strict';
