@@ -1,6 +1,6 @@
 /*
  Author  : Venkatesh Nelli
- Version : 3.0
+ Version : 2.0
  License : GNU General Public License v3.0
  Description: This Directive is used for masking aadhaar number and mobile number
  */
@@ -160,7 +160,7 @@
                     }
                 }
                 else {
-                     if ($('input[uid-input-model=' + $attrs.uidInputModel + ']').val().length > e.target.selectionStart) {
+                    if ($('input[uid-input-model=' + $attrs.uidInputModel + ']').val().length > e.target.selectionStart) {
                         e.preventDefault();
                     }
                 }
@@ -214,27 +214,29 @@
             //watches for any change of data mask model from code
             $scope.$watch(mask_model, function (new_data, old_data) {
                 var data = $scope.$eval($attrs.uidInputModel);
-                if (new_data == true) {
-                    $('input[uid-input-model=' + $attrs.uidInputModel + ']').val(data);
-                }
-                else {
-                    var temp_value = "";
+                if (data != null && data != undefined && data != "") {
+                    if (new_data == true) {
+                        $('input[uid-input-model=' + $attrs.uidInputModel + ']').val(data);
+                    }
+                    else {
+                        var temp_value = "";
 
-                    for (var i = 0; i < data.length; i++) {
+                        for (var i = 0; i < data.length; i++) {
 
-                        var mask_length = $attrs.maskLength;
-                        if (i < mask_length) {
-                            temp_value = temp_value + 'X';
+                            var mask_length = $attrs.maskLength;
+                            if (i < mask_length) {
+                                temp_value = temp_value + 'X';
+                            }
+                            else {
+                                temp_value = temp_value + data.charAt(i);
+                            }
+
                         }
-                        else {
-                            temp_value = temp_value + data.charAt(i);
-                        }
+                        //adds modified data to input tag
+                        $('input[uid-input-model=' + $attrs.uidInputModel + ']').val(temp_value);
+
 
                     }
-                    //adds modified data to input tag
-                    $('input[uid-input-model=' + $attrs.uidInputModel + ']').val(temp_value);
-
-
                 }
             });
 
@@ -552,27 +554,29 @@
             //watches for any change of data mask model from code
             $scope.$watch(mask_model, function (new_data, old_data) {
                 var data = $scope.$eval($attrs.mobileInputModel);
-                if (new_data == true) {
-                    $('input[mobile-input-model=' + $attrs.mobileInputModel + ']').val(data);
-                }
-                else {
-                    var temp_value = "";
+                if (data != null && data != undefined && data != "") {
+                    if (new_data == true) {
+                        $('input[mobile-input-model=' + $attrs.mobileInputModel + ']').val(data);
+                    }
+                    else {
+                        var temp_value = "";
 
-                    for (var i = 0; i < data.length; i++) {
+                        for (var i = 0; i < data.length; i++) {
 
-                        var mask_length = $attrs.maskLength;
-                        if (i < mask_length) {
-                            temp_value = temp_value + 'X';
+                            var mask_length = $attrs.maskLength;
+                            if (i < mask_length) {
+                                temp_value = temp_value + 'X';
+                            }
+                            else {
+                                temp_value = temp_value + data.charAt(i);
+                            }
+
                         }
-                        else {
-                            temp_value = temp_value + data.charAt(i);
-                        }
+                        //adds modified data to input tag
+                        $('input[mobile-input-model=' + $attrs.mobileInputModel + ']').val(temp_value);
+
 
                     }
-                    //adds modified data to input tag
-                    $('input[mobile-input-model=' + $attrs.mobileInputModel + ']').val(temp_value);
-
-
                 }
             });
 
